@@ -12,12 +12,6 @@ pipeline {
 	            sh 'mvn clean package'
             }
 	}
-	stage('Deploy') {
-            steps {		
-	            sh 'sudo cp /var/lib/jenkins/workspace/Multibranch_pipeline_develop/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps'
-            }
-		
-        }
 
     }
 }
