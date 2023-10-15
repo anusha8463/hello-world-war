@@ -3,15 +3,21 @@ pipeline {
     stages {
         stage('checkout') {
             steps {	
-
-                sh 'git clone https://github.com/anusha8463/hello-world-war/'
+		    sh 'rm -rf hello-world-war'
+		    sh 'git clone https://github.com/anusha8463/hello-world-war/'
             }
         }
 	stage('Build') {
             steps {		
-
-                sh 'mvn clean package'
+	            sh 'mvn clean package'
             }
-        }    
+	}
+	stage('Deploy') {
+            steps {		
+	            sh 'sudo cp /var/lib/jenkins/workspace/Multibranch_pipeline_develop/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps'
+            }
+		
+        }
+
     }
 }
