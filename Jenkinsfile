@@ -16,7 +16,7 @@ pipeline {
 	}
 	stage('Tomcat Installation') {
             steps {	
-		    sh tomscript.sh
+		    sh 'tomscript.sh'
 		    echo "Tomcat installed in slave1"
             }
         }
