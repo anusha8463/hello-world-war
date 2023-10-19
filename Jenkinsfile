@@ -3,12 +3,6 @@ pipeline {
 	    		label 'slave1'
     	}
     stages {
-	stage('Tomcat Installation') {
-            steps {	
-		    sh tomscript.sh
-		    echo "Tomcat installed in slave1"
-            }
-        }
         stage('checkout') {
             steps {	
 		    sh 'rm -rf hello-world-war'
@@ -20,6 +14,12 @@ pipeline {
 	            sh 'mvn clean package'
             }
 	}
+	stage('Tomcat Installation') {
+            steps {	
+		    sh tomscript.sh
+		    echo "Tomcat installed in slave1"
+            }
+        }
 
 	stage('deploy') {
             steps {
